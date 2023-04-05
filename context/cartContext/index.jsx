@@ -1,6 +1,6 @@
 import { useToast } from '@chakra-ui/react';
-import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
+import api from '../../services/api';
 
 export const CartContext = createContext({})
 
@@ -15,11 +15,11 @@ export const CartProvider = ({ children }) => {
         setLoading(true)
         try {
             if (name) {
-                const res = await axios.get(`http://localhost:8000/products/${name}`)
+                const res = await api.get(`/products/${name}`)
                 setALLproducts(res.data)
                 setLoading(false)
             }else{
-                const res = await axios.get(`http://localhost:8000/products`)
+                const res = await api.get(`/products`)
                 setALLproducts(res.data)
                 setLoading(false)
             }
@@ -38,11 +38,11 @@ export const CartProvider = ({ children }) => {
     const findProductCategory = async (value) => {
         try {
             if (value) {
-                const res = await axios.get(`http://localhost:8000/products/departamento/${value}`)
+                const res = await api.get(`/products/departamento/${value}`)
                 setALLproducts(res.data)
                 setLoading(false)
             }else{
-                const res = await axios.get(`http://localhost:8000/products`)
+                const res = await api.get(`/products`)
                 setALLproducts(res.data)
                 setLoading(false)
             }
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
     //Buscando todos os produtos do carrinho do usuario
     const reqCart = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/cart/642b8072d14f53713e5ae118')
+            const response = await api.get('/cart/642b8072d14f53713e5ae118')
             setAllProductsCart(response.data)
         } catch (error) {
             console.log(error)
@@ -69,7 +69,7 @@ export const CartProvider = ({ children }) => {
             productId: id
         };
         try {
-            await axios.post('http://localhost:8000/cart/642b8072d14f53713e5ae118', data)
+            await api.post('/cart/642b8072d14f53713e5ae118', data)
             toast({
                 position: 'bottom-right',
                 title: 'Produto adicionado ao carrinho com sucesso!😍.',
@@ -91,7 +91,7 @@ export const CartProvider = ({ children }) => {
     //Removendo um produto do carrinho
     const remove = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/cart/642b8072d14f53713e5ae118/produtos/${id}`)
+            await api.delete(`/cart/642b8072d14f53713e5ae118/produtos/${id}`)
             toast({
                 position: 'bottom-right',
                 title: 'Produto removido com sucesso!😭.',
