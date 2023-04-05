@@ -21,8 +21,8 @@ export function ProductCart() {
                     <Image
                         marginLeft={5}
                         objectFit='cover'
-                        maxW={'90px'}
-                        maxH={'90px'}
+                        maxW={['200px','200px', '90px']}
+                        maxH={['200px','200px', '90px']}
                         src={item.img}
                         alt='Caffe Latte'
                     />
