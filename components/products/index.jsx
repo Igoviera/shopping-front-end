@@ -1,13 +1,18 @@
-import { Box, Button, Card, CardBody, Flex, Heading, Image, Stack, Text} from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, Flex, HStack, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
+import { AiFillLike } from 'react-icons/ai';
 
 export function Products({ id, img, name, description, price }) {
     const { addProductCart } = useContext(CartContext)
 
     return (
-        <Card h='480px'>
+        <Card h='520px'>
+            <Flex alignItems={'center'} justifyContent={'end'} gap={2} cursor={'pointer'} p={3}>
+                <Text color={'#888888'}>0</Text>
+                <AiFillLike size={'20px'} color="#228beecc" />      
+            </Flex>
             <CardBody display={'flex'} flexDirection={'column'} justifyContent='center'>
                 <Box display={'flex'} justifyContent={'center'}>
                     <Image
