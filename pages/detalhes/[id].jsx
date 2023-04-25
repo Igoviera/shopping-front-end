@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 import { Header } from "../../components/header"
 import { CartContext } from "../../context/cartContext"
+import { Avaliacao } from "../../components/avalicaoes"
 
 export default function Detalhes() {
     const [product, serProdutc] = useState()
@@ -20,10 +21,10 @@ export default function Detalhes() {
             console.log(error)
         }
     }
-
-    useEffect(() => {
-        productDetalhe()
-    }, [id])
+    productDetalhe()
+    // useEffect(() => {
+    //     productDetalhe()
+    // }, [id])
 
     return (
         <>
@@ -60,6 +61,9 @@ export default function Detalhes() {
                         </CardFooter>
                     </Stack>
                 </Card>
+            </Box>
+            <Box padding={10}>
+                <Avaliacao />
             </Box>
         </>
     )

@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardBody, CardFooter, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, CardFooter, Heading, Image, Img, Text } from "@chakra-ui/react";
 import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 
@@ -36,7 +36,7 @@ export function ProductCart() {
                     </CardBody>
                     <CardFooter>
                         <Button onClick={(e) => remove(item._id)} variant='solid' colorScheme='blue'>
-                            Remover
+                            Excluir
                         </Button>
                     </CardFooter>
                 </Card>

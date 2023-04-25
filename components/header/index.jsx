@@ -1,7 +1,8 @@
-import { Flex, Image, Input } from "@chakra-ui/react";
+import { Flex, Heading, Image, Input, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
+import { LoginModal } from "../ModalLogin";
 
 export function Header() {
     const { allProductsCart, reqProduct } = useContext(CartContext)
@@ -12,6 +13,9 @@ export function Header() {
                 <Image maxW={'70px'} src="logo01.png" />
             </Link>
             <Input onChange={(e) => reqProduct(e.target.value)} boxShadow='base' rounded='md' color='black' maxW={'50%'} placeholder="Buscar..." />
+            <Text  color={'black'} >
+                <LoginModal  />
+            </Text>
             <Link href={'/carrinho'}>
                 <Flex
                     position={'absolute'}

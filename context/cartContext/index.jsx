@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
 
     useEffect(() => {
         reqCart()
-    }, [])
+    }, []);
 
 
     // Filtrar produtos por categoria
@@ -48,9 +48,9 @@ export const CartProvider = ({ children }) => {
             }
 
         } catch (error) {
-            
+            console.log(error)
         }
-    }
+    };
 
 
     //Buscando todos os produtos do carrinho do usuario
@@ -86,7 +86,7 @@ export const CartProvider = ({ children }) => {
 
     useEffect(() => {
         reqProduct()
-    }, [])
+    }, []);
 
     //Removendo um produto do carrinho
     const remove = async (id) => {
@@ -103,9 +103,8 @@ export const CartProvider = ({ children }) => {
 
         } catch (error) {
             console.log(error)
-
         }
-    }
+    };
 
     return (
         <CartContext.Provider
