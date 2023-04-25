@@ -37,7 +37,11 @@ export function LoginModal() {
                         <Flex justifyContent={'end'}>
                             <Text fontSize={'13px'}>Ainda não tem conta? Cadastre-se</Text>
                         </Flex>
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> 63a8a47acf6221303717dfdad304c812cf4b7b05
                     </ModalBody>
                     <ModalFooter>
                         <Button colorScheme='blue' >Entrar</Button>
