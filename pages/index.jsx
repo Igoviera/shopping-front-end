@@ -22,10 +22,6 @@ export default function Home() {
         <SimpleGrid p={8} spacing={4} templateColumns='repeat(auto-fill, minmax(290px, 1fr))'>
           <Allproduct />
         </SimpleGrid>
-<<<<<<< HEAD
-=======
-
->>>>>>> 63a8a47acf6221303717dfdad304c812cf4b7b05
       }
     </Box>
   )

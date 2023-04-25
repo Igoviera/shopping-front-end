@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
     //Buscando todos os produtos do carrinho do usuario
     const reqCart = async () => {
         try {
-            const response = await api.get('/cart/642b8072d14f53713e5ae118')
+            const response = await api.get('/cart/644704b1ffaf8343a4276134')
             setAllProductsCart(response.data)
         } catch (error) {
             console.log(error)
@@ -69,7 +69,7 @@ export const CartProvider = ({ children }) => {
             productId: id
         };
         try {
-            await api.post('/cart/642b8072d14f53713e5ae118', data)
+            await api.post('/cart/644704b1ffaf8343a4276134', data)
             toast({
                 position: 'bottom-right',
                 title: 'Produto adicionado ao carrinho com sucesso!😍.',
@@ -91,7 +91,7 @@ export const CartProvider = ({ children }) => {
     //Removendo um produto do carrinho
     const remove = async (id) => {
         try {
-            await api.delete(`/cart/642b8072d14f53713e5ae118/produtos/${id}`)
+            await api.delete(`/cart/644704b1ffaf8343a4276134/produtos/${id}`)
             toast({
                 position: 'bottom-right',
                 title: 'Produto removido com sucesso!😭.',

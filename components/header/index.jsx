@@ -13,9 +13,9 @@ export function Header() {
                 <Image maxW={'70px'} src="logo01.png" />
             </Link>
             <Input onChange={(e) => reqProduct(e.target.value)} boxShadow='base' rounded='md' color='black' maxW={'50%'} placeholder="Buscar..." />
-            <Text  color={'black'} >
-                <LoginModal  />
-            </Text>
+            
+            <LoginModal/>
+            
             <Link href={'/carrinho'}>
                 <Flex
                     position={'absolute'}
