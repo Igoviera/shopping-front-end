@@ -12,7 +12,11 @@ import {
     FormControl,
     FormLabel,
     Text,
-    Flex
+    Flex,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem
 } from '@chakra-ui/react'
 
 export function LoginModal() {

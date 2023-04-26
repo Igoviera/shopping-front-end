@@ -1,13 +1,13 @@
 import { Box, Button, Flex, HStack, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, Textarea } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 
-export function Avaliacao() {
+export function Avaliacao({comments}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Box>
             <Flex justifyContent={'space-between'}>
                 <Heading>Avaliação dos Clientes</Heading>
-                <Button colorScheme="blue" onClick={onOpen}>Escreva uma avaliação</Button>
+                <Button p={2} color={'white'} variant='unstyled' bg='#FF5C01' onClick={onOpen}>Escreva uma avaliação</Button>
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
@@ -37,7 +37,7 @@ export function Avaliacao() {
                     </Text>
                 </HStack>
                 <Text>
-                    O arroz tio urbano é otimo, super recomendo.
+                   {comments}
                 </Text>
             </Box>
 

@@ -8,10 +8,10 @@ export function FilterBuscar() {
 
     const categories = [
         {value: null, label: 'Todos'},
-        {value:'laticinios', label: 'laticinios'},
-        {value:'higiene', label: 'Higiene'},
-        {value:'limpeza', label: 'Limpeza'},
-        {value:'mercearia', label: 'Mercearia'},
+        {value:'mercado', label: 'Mercado'},
+        {value:'informatica', label: 'Informática'},
+        {value:'celulares', label: 'Celulares'},
+        {value:'eletrodomesticos', label: 'Eletrodomésticos'},
     ]
 
     const handleTabClick = (value) => {
@@ -20,8 +20,8 @@ export function FilterBuscar() {
     }
 
     return (
-        <Box overflow={'auto'} display='flex' justifyContent={'center'}>
-            <Tabs ml={'32px'} colorScheme='green' isLazy>
+        <Box mb={2} color={'white'} overflow={'auto'} display='flex' justifyContent={'center'} bg={'#FF5C01'}>
+            <Tabs ml={'32px'} variant='line' colorScheme='blackAlpha'>
                 <TabList >
                     {categories.map((category) => (
                         <Tab

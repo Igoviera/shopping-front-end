@@ -8,7 +8,7 @@ export default function CartPage() {
     return (
         <>
             <Header />
-            <Flex m={10} gap={'16px'}  flexWrap={['wrap','wrap','nowrap']}>
+            <Flex  m={10} gap={'16px'}  flexWrap={['wrap','wrap','nowrap']}>
                 <ProductCart />
                 <CardTotal />
             </Flex>

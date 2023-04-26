@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardBody, CardFooter, Heading, Image, Stack, Text } from "@chakra-ui/react"
+import { Box, Button, Card, CardBody, CardFooter, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react"
 import axios from "axios"
 import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
@@ -31,19 +31,24 @@ export default function Detalhes() {
             <Header />
             <Box display={'flex'} justifyContent='center'>
                 <Card
-                    direction={{ base: 'column', sm: 'row' }}
+                    direction={{ base: 'column', md: 'row'}}
                     overflow='hidden'
                     variant='outline'
-                    maxW={800}
+                    w={'90%'}
                     mt={10}
                     p={5}
                 >
-                    <Image
-                        objectFit='cover'
-                        maxW={{ base: '90%', sm: '200px' }}
-                        src={product?.img}
-                        alt='Caffe Latte'
-                    />
+                    <Box>
+                        <Flex justifyContent={'center'}>
+                            <Image
+                                objectFit='cover'
+                                maxW={'250px'}
+                                height={'auto'}
+                                src={product?.img}
+                                alt='Caffe Latte'
+                            />
+                       </Flex>
+                    </Box>
                     <Stack>
                         <CardBody>
                             <Heading size='md'>{product?.name}</Heading>
@@ -55,7 +60,7 @@ export default function Detalhes() {
                             </Text>
                         </CardBody>
                         <CardFooter>
-                            <Button onClick={() => addProductCart(product._id)} variant='solid' colorScheme='blue'>
+                            <Button onClick={() => addProductCart(product._id)} p={2} color={'white'} variant='unstyled' bg='#FF5C01'>
                                 Adicionar ao carrinho
                             </Button>
                         </CardFooter>
@@ -63,7 +68,7 @@ export default function Detalhes() {
                 </Card>
             </Box>
             <Box padding={10}>
-                <Avaliacao />
+                <Avaliacao comments={product?.comments} />
             </Box>
         </>
     )

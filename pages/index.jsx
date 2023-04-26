@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <Box>
       <Header />
-      <Img src="/banner.jpg" />
       <FilterBuscar />
+      <Img src="/banner2.png" />
       {loading ?
         <Center mt={10}>
           <Spinner color='blue.500' size='xl' thickness='3px' />

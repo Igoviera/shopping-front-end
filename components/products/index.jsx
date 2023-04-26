@@ -11,7 +11,7 @@ export function Products({ id, img, name, description, price }) {
         <Card h='520px'>
             <Flex alignItems={'center'} justifyContent={'end'} gap={2} cursor={'pointer'} p={3}>
                 <Text color={'#888888'}>0</Text>
-                <AiFillLike size={'20px'} color="#228beecc" />      
+                <AiFillLike size={'20px'} color="#FF5C01" />
             </Flex>
             <CardBody display={'flex'} flexDirection={'column'} justifyContent='center'>
                 <Box display={'flex'} justifyContent={'center'}>
@@ -23,20 +23,20 @@ export function Products({ id, img, name, description, price }) {
                     />
                 </Box>
                 <Stack mt='6' spacing='3'>
-                    <Heading size='md'>{name}</Heading>
-                    <Text color='green.400' fontWeight={'semibold'} fontSize='2xl'>
-                        R$ {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}
+                    <Heading size='sm'>{name}</Heading>
+                    <Text fontWeight={'semibold'}  fontSize='3xl'>
+                        {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}
                     </Text>
                 </Stack>
             </CardBody>
             <Flex justifyContent={'center'} mb={5} gap={2}>
-                <Button onClick={() => addProductCart(id)
-                } variant='solid' colorScheme='blue' w={'45%'}>
+                <Button onClick={() => addProductCart(id)}  
+                     bg='#FF5C01' color={'white'} variant='unstyled' w={'45%'}>
                     Comprar
                 </Button>
-                <Button bg='none' border={'solid 1px #2d88f0'} w={'45%'}>
+                <Button variant='unstyled' bg='none' border={'solid 1px orange'} w={'45%'}>
                     <Link href={`/detalhes/${id}`}>
-                        <Text color={'blue.400'}>Detalhes</Text>
+                        <Text color={'#FF5C01'}>Detalhes</Text>
                     </Link>
                 </Button>
             </Flex>
