@@ -5,10 +5,11 @@ import { Products } from "../components/products";
 import { Allproduct } from "../components/products/product";
 import { useContext } from "react";
 import { CartContext } from "../context/cartContext";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
   const { loading } = useContext(CartContext)
-
+  const { data: session } = useSession()
   return (
     <Box>
       <Header />

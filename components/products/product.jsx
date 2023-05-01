@@ -4,7 +4,7 @@ import { Products } from ".";
 import { CartContext } from "../../context/cartContext";
 
 export function Allproduct() {
-    const { allProducts} = useContext(CartContext)
+    const { allProducts } = useContext(CartContext)
 
     return (
         <>

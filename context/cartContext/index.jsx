@@ -1,6 +1,7 @@
 import { useToast } from '@chakra-ui/react';
 import { createContext, useEffect, useState } from 'react';
 import api from '../../services/api';
+import { useSession } from 'next-auth/react';
 
 export const CartContext = createContext({})
 
@@ -9,6 +10,22 @@ export const CartProvider = ({ children }) => {
     const [allProductsCart, setAllProductsCart] = useState()
     const [loading, setLoading] = useState(false)
     const toast = useToast()
+ 
+    const {data: sesseion} = useSession()
+    console.log("🚀 ~ file: login.jsx:17 ~ Login ~ sesseion:", sesseion)
+
+    //Buscar usuario por ID
+    // const findByUser = async () => {
+    //     try {
+    //         const user = await api.get(`/auth/profile`)
+    //         if(user){
+    //             const userId = await api.get(`/user/${user.sub}`)
+    //             setUserId(userId)
+    //         }
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     //Buscando todos os produtos
     const reqProduct = async (name) => {
@@ -18,7 +35,7 @@ export const CartProvider = ({ children }) => {
                 const res = await api.get(`/products/${name}`)
                 setALLproducts(res.data)
                 setLoading(false)
-            }else{
+            } else {
                 const res = await api.get(`/products`)
                 setALLproducts(res.data)
                 setLoading(false)
@@ -41,7 +58,7 @@ export const CartProvider = ({ children }) => {
                 const res = await api.get(`/products/departamento/${value}`)
                 setALLproducts(res.data)
                 setLoading(false)
-            }else{
+            } else {
                 const res = await api.get(`/products`)
                 setALLproducts(res.data)
                 setLoading(false)
@@ -51,7 +68,6 @@ export const CartProvider = ({ children }) => {
             console.log(error)
         }
     };
-
 
     //Buscando todos os produtos do carrinho do usuario
     const reqCart = async () => {

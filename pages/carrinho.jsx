@@ -4,7 +4,10 @@ import { CardTotal } from "../components/Cart/cardTotal";
 
 import { Header } from "../components/header";
 
-export default function CartPage() {
+// import { getSession } from "next-auth/react";
+
+export default function CartPage({user}) {
+
     return (
         <>
             <Header />
@@ -15,3 +18,23 @@ export default function CartPage() {
         </>
     )
 }
+
+// export async function getServerSideProps(context) {
+//     const session = await getSession(context)
+
+//     if(!session) {
+//         return {
+//             redirect:{
+//                 destination: '/login',
+//                 permanent: false
+//             }
+//         }
+//     }
+
+//     return {
+//         props: {
+//           user: session.user,
+//         },
+//       };
+    
+// }

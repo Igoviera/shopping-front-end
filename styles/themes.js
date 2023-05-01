@@ -6,6 +6,7 @@ export const theme = extendTheme({
             body: {
                 fontSize: '18px',
                 fontWeight: 300,
+                bg:'red !important'
             }
         }
     }

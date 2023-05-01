@@ -55,7 +55,7 @@ export default function Detalhes() {
                             <Text py='2'>
                                 {product?.description}
                             </Text>
-                            <Text color='green.400' fontWeight={'semibold'} fontSize='2xl'>
+                            <Text fontWeight={'semibold'} fontSize='3xl'>
                                 {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product?.price)}
                             </Text>
                         </CardBody>

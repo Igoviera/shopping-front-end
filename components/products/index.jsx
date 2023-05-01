@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 import { AiFillLike } from 'react-icons/ai';
 
+
 export function Products({ id, img, name, description, price }) {
     const { addProductCart } = useContext(CartContext)
 
@@ -22,7 +23,7 @@ export function Products({ id, img, name, description, price }) {
                         maxH={200}
                     />
                 </Box>
-                <Stack mt='6' spacing='3'>
+                <Stack mt='6'>
                     <Heading size='sm'>{name}</Heading>
                     <Text fontWeight={'semibold'}  fontSize='3xl'>
                         {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}
