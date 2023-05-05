@@ -24,7 +24,10 @@
     "yup": "^1.1.1"
   },
   "devDependencies": {
+    "@types/node": "^18.16.3",
+    "@types/react": "^18.2.0",
     "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4"
+    "eslint-config-next": "13.2.4",
+    "typescript": "^5.0.4"
   }
 }
