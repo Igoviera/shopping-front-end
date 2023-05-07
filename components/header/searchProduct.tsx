@@ -10,6 +10,7 @@ export function Search() {
     <InputGroup>
       <Input
         onChange={(e) => reqProduct(e.target.value)}
+        focusBorderColor='#FF5C01'
         bg={'white'}
         boxShadow="base"
         rounded="md"
