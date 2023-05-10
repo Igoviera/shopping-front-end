@@ -12,6 +12,7 @@ export function ProductCart() {
             return product
         })
     })
+    console.log("🚀 ~ file: index.tsx:15 ~ userProducts ~ userProducts:", userProducts)
 
     return (
         <Box>

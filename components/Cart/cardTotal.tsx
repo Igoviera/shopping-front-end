@@ -9,10 +9,10 @@ export function CardTotal() {
     const userProducts = user?.cart.map((item: any) => {
         return item.valorTotal
     })
-
+ 
     return (
         <>
-            {userProducts === undefined ? (
+            {userProducts === undefined || userProducts == 0?(
                 <Flex w="100vw" justifyContent={'center'} mt={'16px'}>
                     <Heading>Seu carinho está vazio!🛒😕</Heading>
                 </Flex>

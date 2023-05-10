@@ -21,6 +21,7 @@ import { authOptions } from './api/auth/[...nextauth]'
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { CartContext } from '../context/cartContext'
+import Head from 'next/head'
 
 const schema = yup
     .object({
@@ -60,40 +61,52 @@ export default function Login() {
     }
 
     return (
-        <Container mt={30} boxShadow="md" p="10" rounded="md" bg="white" borderRadius={10} maxW="lg">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <Text>Email</Text>
-                <Input
-                    mt={3}
-                    focusBorderColor="#FF5C01"
-                    placeholder="Digite seu e-mail"
-                    type="text"
-                    {...register('email', { required: true })}
-                />
-                <Text color={'red'} fontSize={16}>
-                    {errors.email?.message}
-                </Text>
-                <Text mt="2rem">Senha</Text>
-                <Input
-                    mt={3}
-                    focusBorderColor="#FF5C01"
-                    placeholder="Digite sua senha"
-                    type="password"
-                    {...register('password', { required: true })}
-                />
-                <Text color={'red'} fontSize={16}>
-                    {errors.password?.message}
-                </Text>
-                <Flex justifyContent={'end'} mt={2}>
-                    <Text fontSize={'13px'} cursor={'pointer'}>
-                        Não conta? cadastre-se
+        <>
+            <Head>
+                <title>Login</title>
+            </Head>
+            <Container mt={30} boxShadow="md" p="10" rounded="md" bg="white" borderRadius={10} maxW="lg">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <Text>Email</Text>
+                    <Input
+                        mt={3}
+                        focusBorderColor="#FF5C01"
+                        placeholder="Digite seu e-mail"
+                        type="text"
+                        {...register('email', { required: true })}
+                    />
+                    <Text color={'red'} fontSize={16}>
+                        {errors.email?.message}
                     </Text>
-                </Flex>
-                <Button type="submit" variant="unstyled" bg="#FF5C01" color={'white'} mt={'2rem'} w={'100%'}>
-                    Entrar
-                </Button>
-            </form>
-        </Container>
+                    <Text mt="2rem">Senha</Text>
+                    <Input
+                        mt={3}
+                        focusBorderColor="#FF5C01"
+                        placeholder="Digite sua senha"
+                        type="password"
+                        {...register('password', { required: true })}
+                    />
+                    <Text color={'red'} fontSize={16}>
+                        {errors.password?.message}
+                    </Text>
+                    <Flex justifyContent={'end'} mt={2}>
+                        <Text fontSize={'13px'} cursor={'pointer'}>
+                            Não conta? cadastre-se
+                        </Text>
+                    </Flex>
+                    <Button
+                        type="submit"
+                        variant="unstyled"
+                        bg="#FF5C01"
+                        color={'white'}
+                        mt={'2rem'}
+                        w={'100%'}
+                    >
+                        Entrar
+                    </Button>
+                </form>
+            </Container>
+        </>
     )
 }
 

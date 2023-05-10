@@ -61,6 +61,7 @@ export default function Detalhes() {
                     <Box>
                         <Flex justifyContent={'center'}>
                             <Image
+                                _hover={{transform: 'scale(1.1)', transition:'0.5s'}}
                                 objectFit="cover"
                                 maxW={'250px'}
                                 height={'auto'}

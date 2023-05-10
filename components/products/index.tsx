@@ -1,9 +1,10 @@
-import { Box, Button, Card, CardBody, Flex, HStack, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, Flex, HStack, Heading, Image, Stack, Text, transition } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { CartContext } from '../../context/cartContext'
 import { AiFillLike } from 'react-icons/ai'
 import { Product } from '../../types/produtc'
+import { MyButton } from '../button'
 
 interface ProductsProps {
     product: Product
@@ -21,6 +22,7 @@ export function Products({ product }: ProductsProps) {
             <CardBody display={'flex'} flexDirection={'column'} justifyContent="center">
                 <Box display={'flex'} justifyContent={'center'}>
                     <Image
+                         _hover={{transform: 'scale(1.1)', transition:'0.5s'}}
                         src={product.img}
                         alt="Green double couch with wooden legs"
                         maxW={200}
@@ -37,7 +39,8 @@ export function Products({ product }: ProductsProps) {
                 </Stack>
             </CardBody>
             <Flex justifyContent={'center'} mb={5} gap={2}>
-                <Button
+              <MyButton w={'45%'} label={'Comprar'} onclick={() => addProductCart(product._id)}/>
+                {/* <Button
                     onClick={() => addProductCart(product._id)}
                     bg="#FF5C01"
                     color={'white'}
@@ -45,7 +48,7 @@ export function Products({ product }: ProductsProps) {
                     w={'45%'}
                 >
                     Comprar
-                </Button>
+                </Button> */}
                 <Button variant="unstyled" bg="none" border={'solid 1px orange'} w={'45%'}>
                     <Link href={`/detalhes/${product._id}`}>
                         <Text color={'#FF5C01'}>Detalhes</Text>

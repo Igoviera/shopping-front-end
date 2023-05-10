@@ -109,7 +109,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/login.tsx", "components/filterBuscar/inde.jsx", "components/Cart/index.tsx", "components/avalicaoes/index.tsx"  ],
+, "pages/login.tsx", "components/filterBuscar/inde.jsx", "components/Cart/index.tsx", "components/avalicaoes/index.tsx", "pages/_app.jsx"  ],
   "exclude": [
     "node_modules"
   ]

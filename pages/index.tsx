@@ -7,22 +7,31 @@ import { useContext } from 'react'
 import { CartContext } from '../context/cartContext'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { Loading } from '../components/loading/loading'
+import Head from 'next/head'
+import { Carousel } from '../components/carousel'
 
 export default function Home() {
     const { loading } = useContext(CartContext)
 
     return (
-        <Box>
-            <Header />
-            <FilterBuscar />
-            <Img src="/banner2.png" />
-            {loading ? (
-                <Loading />
-            ) : (
-                <SimpleGrid p={8} spacing={4} templateColumns="repeat(auto-fill, minmax(290px, 1fr))">
-                    <Allproduct />
-                </SimpleGrid>
-            )}
-        </Box>
+        <>
+            <Head>
+                <title>Online Shop</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <main>
+                <Header />
+                <FilterBuscar />
+                <Carousel />
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <SimpleGrid p={8} spacing={4} templateColumns="repeat(auto-fill, minmax(290px, 1fr))">
+                        <Allproduct />
+                    </SimpleGrid>
+                )}
+            </main>
+        </>
     )
 }

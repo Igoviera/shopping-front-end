@@ -89,7 +89,7 @@ export function Avaliacao({ product }: any) {
                                 <Text>Olá, {user?.name}</Text>
                                 <Textarea
                                     resize={'none'}
-                                    placeholder='Digite seu comentário...'
+                                    placeholder="Digite seu comentário..."
                                     focusBorderColor="#FF5C01"
                                     mt={5}
                                     {...register('text', { required: true })}
@@ -99,7 +99,14 @@ export function Avaliacao({ product }: any) {
                                 </Text>
                             </ModalBody>
                             <ModalFooter>
-                                <Button type="submit" colorScheme="blue">
+                                <Button
+                                    p={2}
+                                    color={'white'}
+                                    variant="unstyled"
+                                    bg="#FF5C01"
+                                    type="submit"
+                                    colorScheme="blue"
+                                >
                                     Enviar
                                 </Button>
                             </ModalFooter>
