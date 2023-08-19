@@ -32,6 +32,7 @@
     "@types/slick-carousel": "^1.6.37",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "tailwindcss": "^3.3.3",
     "typescript": "^5.0.4"
   }
 }

@@ -41,7 +41,7 @@ export function FilterBuscar() {
   }
 
   return (
-    <Box mb={2} color={'white'} display="flex" justifyContent={'center'} bg={'#FF5C01'}>
+    <Box color={'white'} display="flex" justifyContent={'center'} bg={'#FF5C01'}>
       <Flex margin={'auto'} display={['block', 'block', 'none']}>
         <Button ref={btnRef} bg={'none'} onClick={onOpen}>
           <FiMenu size={30} />

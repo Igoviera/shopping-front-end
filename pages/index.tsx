@@ -21,9 +21,9 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <Header />
-                <FilterBuscar />
-                <Carousel />
+                <Header />  
+                <FilterBuscar />            
+                <Carousel /> 
                 {loading ? (
                     <Loading />
                 ) : (
