@@ -9,6 +9,7 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 import { Loading } from '../components/loading/loading'
 import Head from 'next/head'
 import { Carousel } from '../components/carousel'
+import { Footer } from '../components/footer'
 
 export default function Home() {
     const { loading } = useContext(CartContext)
@@ -23,7 +24,7 @@ export default function Home() {
             <main>
                 <Header />  
                 <FilterBuscar />            
-                <Carousel /> 
+                {/* <Carousel />  */}
                 {loading ? (
                     <Loading />
                 ) : (
@@ -32,6 +33,9 @@ export default function Home() {
                     </SimpleGrid>
                 )}
             </main>
+            <footer>
+                <Footer/>
+            </footer>
         </>
     )
 }

@@ -22,12 +22,12 @@ export function Carousel() {
 
     return (
         <Slider {...settings}>
-            <div>
+              <div>
                 <Image width={1440} height={200} alt="banner" src="/banner2.png" />
             </div>
             <div>
                 <Image width={1440} height={200} alt="banner" src="/banner5.png" />
-            </div>
+            </div>            
         </Slider>
     )
 }
