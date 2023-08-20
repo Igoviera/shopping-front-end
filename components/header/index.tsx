@@ -28,7 +28,10 @@ export function Header() {
             p={5}
         >
             <Link href={'/'}>
-                <Image maxW={'70px'} src="logo01.png" />
+                {/* <Image maxW={'70px'} src="logo01.png" /> */}
+                <Text fontFamily={'cursive'} fontSize={'2xl'} fontWeight={'black'}>
+                    Online Shop
+                </Text>
             </Link>
             <Flex w={'50%'} display={['none', 'none', 'block']}>
                 <Search />

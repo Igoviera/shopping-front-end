@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Header } from '../../components/header'
 import { CartContext } from '../../context/cartContext'
 import { Avaliacao } from '../../components/avalicaoes'
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 interface Product {
     _id: string
@@ -56,6 +57,7 @@ export default function Detalhes() {
                         overflow="hidden"
                         variant="outline"
                         mt={10}
+                        gap={10}
                         p={5}
                     >
                         <Box>
@@ -79,6 +81,7 @@ export default function Detalhes() {
                             <CardBody>
                                 <Heading size="md">{product?.name}</Heading>
                                 <Text py="2">{product?.description}</Text>
+                                <Flex> <AiFillStar/> <Text color={'gray.600'}>150 Avaliações de clientes</Text></Flex>
                                 <Text fontWeight={'semibold'} fontSize="3xl">
                                     {product?.price &&
                                         new Intl.NumberFormat('pt-BR', {
