@@ -24,6 +24,8 @@ import api from '../../services/api'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { Product } from '../../types/produtc'
+import {AiOutlineStar} from 'react-icons/ai'
+import { Star } from '../start'
 
 export interface Comment {
     _id: string
@@ -80,13 +82,16 @@ export function Avaliacao({ product }: any) {
                 </Button>
 
                 <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
+                    <ModalOverlay/>
                     <ModalContent>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <ModalHeader>Avalie este produto</ModalHeader>
                             <ModalCloseButton />
                             <ModalBody>
                                 <Text>Olá, {user?.name}</Text>
+                                <Flex gap={3} mt={5}>
+                                    <Star/>
+                                </Flex>
                                 <Textarea
                                     resize={'none'}
                                     placeholder="Digite seu comentário..."

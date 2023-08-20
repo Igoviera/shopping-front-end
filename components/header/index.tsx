@@ -19,10 +19,9 @@ export function Header() {
 
     return (
         <Flex
-            bg={'white'}
+            bg={'#FF5C01'}
             color={'white'}
             boxShadow="base"
-            rounded="md"
             h="80px"
             justifyContent={'space-between'}
             alignItems="center"
@@ -55,9 +54,7 @@ export function Header() {
                         </Menu>
                     )}
                     <Text
-                        color={'black'}
-                        transition={'0.5s'}
-                        _hover={{ color: '#FF5C01' }}
+                        color={'white'}
                         cursor={'pointer'}
                     >
                         {!session && <Link href={'/login'}>Login</Link>}
@@ -82,7 +79,7 @@ export function Header() {
                             {userProducts?.length}
                         </Flex>
                     ) : null}
-                    <Image src="https://img.icons8.com/ios-glyphs/30/F4650F/shopping-basket.png"></Image>
+                    <Image src="https://img.icons8.com/ios-glyphs/30/FFFFFF/shopping-basket.png"></Image>
                 </Link>
             </Flex>
         </Flex>
