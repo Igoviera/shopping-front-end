@@ -1,4 +1,4 @@
-import { Button, Card, Flex, Heading, Stack, Text } from '@chakra-ui/react'
+import { Button, Card, Flex, Heading, Stack, Text,Box } from '@chakra-ui/react'
 import { useContext } from 'react'
 import { CartContext } from '../../context/cartContext'
 import Link from 'next/link'
@@ -17,7 +17,7 @@ export function CardTotal() {
                     <Heading>Seu carinho está vazio!🛒😕</Heading>
                 </Flex>
             ) : (
-                <Card w={['md', '2xl']} p={'16px'} mt={'40px'}>
+                <Card w={['md', '2xl']} p={'16px'} mt={'53px'}>
                     <Stack mt={3}>
                         <Heading mb={10} size="md">
                             Resumo do pedido

@@ -42,10 +42,10 @@ export function Header() {
                         <Menu>
                             <MenuButton transition="all 0.2s" color={'black'}>
                                 <HStack>
-                                    <Text fontWeight={'semibold'}>
+                                    <Text fontWeight={'semibold'} color={'white'}>
                                         Olá, {user?.name.charAt(0).toUpperCase() + user?.name.slice(1)}{' '}
                                     </Text>
-                                    <IoMdArrowDropdown />
+                                    <IoMdArrowDropdown color='white'/>
                                 </HStack>
                             </MenuButton>
                             <MenuList color="black" >
@@ -68,15 +68,15 @@ export function Header() {
                     {userProducts?.length > 0 ? (
                         <Flex
                             position={'absolute'}
-                            bg="#02df1f"
+                            bg="orange.700"
                             borderRadius={'50%'}
                             justifyContent="center"
                             alignItems='center'
-                            w={7}
-                            h={7}
+                            w={6}
+                            h={6}
                             top="15px"
                             right={10}
-                            fontSize={20}
+                            fontSize={15}
                             fontWeight="semibold"
                         >
                             {userProducts?.length}
