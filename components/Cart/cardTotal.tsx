@@ -17,7 +17,7 @@ export function CardTotal() {
                     <Heading>Seu carinho está vazio!🛒😕</Heading>
                 </Flex>
             ) : (
-                <Card w={['md', '2xl']} p={'16px'} mt={'53px'}>
+                <Card w={['md', '3xl']} p={'16px'} mt={'53px'}>
                     <Stack mt={3}>
                         <Heading mb={10} size="md">
                             Resumo do pedido

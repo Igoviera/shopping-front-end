@@ -49,10 +49,15 @@ export function Header() {
                                 </HStack>
                             </MenuButton>
                             <MenuList color="black" >
-                                <MenuItem onClick={() => signOut()}>Sair</MenuItem>
+                                <MenuItem>
+                                    <Link href={'/perfil'}>Perfil</Link>
+                                </MenuItem>
                                 <MenuItem >
                                     <Link href={'/carrinho'}>Meus produtos</Link>
                                 </MenuItem>
+                                
+                                <MenuItem onClick={() => signOut()}>Sair</MenuItem>
+                                
                             </MenuList>
                         </Menu>
                     )}
