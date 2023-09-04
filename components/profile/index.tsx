@@ -1,4 +1,5 @@
-import { Box, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Input, Text } from '@chakra-ui/react'
+import { MyButton } from '../button'
 
 export const Profile = () => {
     return (
@@ -33,6 +34,9 @@ export const Profile = () => {
                     <Input placeholder="N°" />
                 </Box>
             </Box>
+            <Box mt={5}>
+             <MyButton  label='Salvar' w='300px' onclick={''}/>   
+            </Box>         
         </Box>
     )
 }
