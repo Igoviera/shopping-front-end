@@ -35,8 +35,8 @@ export const Profile = () => {
                 </Box>
             </Box>
             <Box mt={5}>
-             <MyButton  label='Salvar' w='300px' onclick={''}/>   
-            </Box>         
+                <MyButton label="Salvar" w="300px" onclick={''} />
+            </Box>
         </Box>
     )
 }

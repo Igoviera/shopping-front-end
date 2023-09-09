@@ -15,6 +15,7 @@ import {
 import { MyButton } from '../button'
 import { useContext } from 'react'
 import { CartContext } from '../../context/cartContext'
+import { Product } from '../../types/produtc'
 
 interface ModalProductProps {
     isOpen: UseDisclosureReturn['isOpen']
@@ -44,11 +45,11 @@ export const ModalProduct = ({ isOpen, onOpen, onClose, product }) => {
                 </ModalBody>
 
                 <ModalFooter>
-                    {/* <Button colorScheme="blue" mr={3} onClick={onClose}>
-                        Close
-                    </Button> */}
-                    
-                    <MyButton onclick={() => addProductCart(product)} label='Adicionar no carrinho' w='250px'/>
+                    <MyButton
+                        onclick={() => addProductCart(product)}
+                        label="Adicionar no carrinho"
+                        w="250px"
+                    />
                 </ModalFooter>
             </ModalContent>
         </Modal>

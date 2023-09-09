@@ -8,14 +8,15 @@ import { IoMdArrowDropdown } from 'react-icons/io'
 
 export function Header() {
     const { user } = useContext(CartContext)
+    const { data: session } = useSession()
 
-    const userProducts = user?.cart.flatMap((item: any) => {
+    const name = user?.name ? user.name.charAt(0).toUpperCase() + user.name.slice(1) : ''
+
+    const userProducts = user?.cart?.flatMap((item: any) => {
         return item.product.map((item: any) => {
             return item
         })
     })
-
-    const { data: session } = useSession()
 
     return (
         <Flex
@@ -28,7 +29,6 @@ export function Header() {
             p={5}
         >
             <Link href={'/'}>
-                {/* <Image maxW={'70px'} src="logo01.png" /> */}
                 <Text fontFamily={'cursive'} fontSize={'2xl'} fontWeight={'black'}>
                     Online Shop
                 </Text>
@@ -43,28 +43,24 @@ export function Header() {
                             <MenuButton transition="all 0.2s" color={'black'}>
                                 <HStack>
                                     <Text fontWeight={'semibold'} color={'white'}>
-                                        Olá, {user?.name.charAt(0).toUpperCase() + user?.name.slice(1)}{' '}
+                                        Olá, {name}
                                     </Text>
-                                    <IoMdArrowDropdown color='white'/>
+                                    <IoMdArrowDropdown color="white" />
                                 </HStack>
                             </MenuButton>
-                            <MenuList color="black" >
+                            <MenuList color="black">
                                 <MenuItem>
                                     <Link href={'/perfil'}>Perfil</Link>
                                 </MenuItem>
-                                <MenuItem >
+                                <MenuItem>
                                     <Link href={'/carrinho'}>Meus produtos</Link>
                                 </MenuItem>
-                                
+
                                 <MenuItem onClick={() => signOut()}>Sair</MenuItem>
-                                
                             </MenuList>
                         </Menu>
                     )}
-                    <Text
-                        color={'white'}
-                        cursor={'pointer'}
-                    >
+                    <Text color={'white'} cursor={'pointer'}>
                         {!session && <Link href={'/login'}>Login</Link>}
                         {/* {session && <Text onClick={() => signOut()}>Sair</Text>} */}
                     </Text>
@@ -76,7 +72,7 @@ export function Header() {
                             bg="orange.700"
                             borderRadius={'50%'}
                             justifyContent="center"
-                            alignItems='center'
+                            alignItems="center"
                             w={6}
                             h={6}
                             top="15px"

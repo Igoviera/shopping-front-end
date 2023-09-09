@@ -1,26 +1,13 @@
-import {
-    Box,
-    Button,
-    Container,
-    Flex,
-    FormControl,
-    Input,
-    InputRightElement,
-    Stack,
-    Text
-} from '@chakra-ui/react'
-import { signIn, useSession } from 'next-auth/react'
+import { Button, Container, Flex, Input, Text } from '@chakra-ui/react'
+import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import React, { useContext, useState } from 'react'
-import Link from 'next/link'
-import { type } from 'os'
+import React, { useState } from 'react'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './api/auth/[...nextauth]'
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
-import { CartContext } from '../context/cartContext'
 import Head from 'next/head'
 
 const schema = yup

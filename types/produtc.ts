@@ -1,3 +1,5 @@
+import {Comment} from './comment'
+
 export interface Product {
     _id: string
     name: string
@@ -7,13 +9,3 @@ export interface Product {
     comments: Comment[]
 }
 
-export interface Comment {
-    _id: string
-    text: string
-    createdAt: string
-    user: {
-        _id: string
-        name: string
-        email: string
-    }
-}

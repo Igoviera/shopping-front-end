@@ -17,26 +17,16 @@ import {
 import { useDisclosure } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
 import { CartContext } from '../../context/cartContext'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import api from '../../services/api'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
+import { Comment } from '../../types/comment'
 import { Product } from '../../types/produtc'
-import {AiOutlineStar} from 'react-icons/ai'
-import { Star } from '../start'
 
-export interface Comment {
-    _id: string
-    text: string
-    createdAt: string
-    user: {
-        _id: string
-        name: string
-        email: string
-    }
-}
 
 const schema = yup
     .object({
@@ -46,10 +36,15 @@ const schema = yup
 
 type FormData = yup.InferType<typeof schema>
 
-export function Avaliacao({ product }: any) {
+export function Avaliacao(product: Product) {
     const { data: session } = useSession()
     const { user } = useContext(CartContext)
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [rating, setRating] = useState(5)
+
+    const handleRatingClick = (star: number) => {
+        setRating(star)
+    }
 
     const router = useRouter()
 
@@ -62,12 +57,14 @@ export function Avaliacao({ product }: any) {
     })
 
     const onSubmit = async (comment: FormData) => {
+        const data = { text: comment.text, star: rating }
+
         if (!session) {
             router.push('/login')
             return
         }
         try {
-            await api.post(`/commet/producId/${product._id}/userId/${user._id}`, comment)
+            await api.post(`/commet/producId/${product._id}/userId/${user?._id}`, data)
         } catch (error) {
             console.log(error)
         }
@@ -82,7 +79,7 @@ export function Avaliacao({ product }: any) {
                 </Button>
 
                 <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay/>
+                    <ModalOverlay />
                     <ModalContent>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <ModalHeader>Avalie este produto</ModalHeader>
@@ -90,7 +87,23 @@ export function Avaliacao({ product }: any) {
                             <ModalBody>
                                 <Text>Olá, {user?.name}</Text>
                                 <Flex gap={3} mt={5}>
-                                    <Star/>
+                                    {[1, 2, 3, 4, 5].map((star, index) => (
+                                        <Box key={index} onClick={() => handleRatingClick(star)}>
+                                            {star <= rating ? (
+                                                <AiFillStar
+                                                    fontSize={25}
+                                                    cursor={'pointer'}
+                                                    color="#FF5C01"
+                                                />
+                                            ) : (
+                                                <AiOutlineStar
+                                                    fontSize={25}
+                                                    cursor={'pointer'}
+                                                    color="#ccc"
+                                                />
+                                            )}
+                                        </Box>
+                                    ))}
                                 </Flex>
                                 <Textarea
                                     resize={'none'}
@@ -120,9 +133,9 @@ export function Avaliacao({ product }: any) {
                 </Modal>
             </Flex>
             <Box mt={5}>
-                <Text>{product?.comments.length} comentários pra esse produto</Text>
-                {product?.comments.map((comment: any) => (
-                    <Box mt={5} borderRadius={10} border={'solid 1px #e4e4e4'}>
+                <Text>{product?.comments?.length} comentários pra esse produto</Text>
+                {product?.comments?.map((comment) => (
+                    <Box key={comment._id} mt={5} borderRadius={10} border={'solid 1px #e4e4e4'}>
                         <Text m={5} mt={5}>
                             {comment.text}
                         </Text>

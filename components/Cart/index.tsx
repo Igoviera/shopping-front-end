@@ -22,7 +22,7 @@ export function ProductCart() {
         
     }
 
-    const userProducts = user?.cart.flatMap((item: any) => {
+    const userProducts = user?.cart?.flatMap((item: any) => {
         return item.product.map((product: any) => {
             return product
         })
@@ -56,13 +56,13 @@ export function ProductCart() {
 
                     <CardBody>
                         <Heading size="md">{item.name}</Heading>
-                        <Heading color={'green.400'} size="md">
+                        <Heading color={'green.400'} size="md" mt={5}>
                             {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
                                 item.price
                             )}
                         </Heading>
-                        <Text py="2">{item.description}</Text>
-                        <Box display={'flex'} alignItems={'center'} gap={3}>
+                        
+                        <Box display={'flex'} alignItems={'center'} gap={3} mt={5}>
                             <Box onClick={reduce} fontWeight={'bold'} color={'white'} cursor={'pointer'} display={'flex'} justifyContent={'center'} alignItems={'center'} bg={'#ff5c01'} w={7} h={7} borderRadius={'full'}>
                                 -
                             </Box>

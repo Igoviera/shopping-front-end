@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Header } from '../../components/header'
 import { CartContext } from '../../context/cartContext'
 import { Avaliacao } from '../../components/avalicaoes'
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 
 interface Product {
     _id: string
@@ -19,6 +19,7 @@ interface Product {
 export interface Comment {
     _id: string
     text: string
+    star: number
     createdAt: string
     user: {
         _id: string
@@ -47,6 +48,16 @@ export default function Detalhes() {
         productDetalhe()
     }, [id])
 
+    const totalStar = product?.comments.reduce((acc, comment) => {
+        // Verificar se 'comment.star' é um número válido antes de somá-lo
+        if (!isNaN(comment.star)) {
+            return acc + comment.star
+        }
+        return acc
+    }, 0)
+
+    const averageStar = (totalStar && product) ? (totalStar / product.comments.length).toFixed(1) : 0
+   
     return (
         <>
             <Header />
@@ -62,9 +73,7 @@ export default function Detalhes() {
                     >
                         <Box>
                             <Flex justifyContent={'center'}>
-                                <Box border={'1px solid red'}>
-                                    +++
-                                </Box>
+                                <Box border={'1px solid red'}>+++</Box>
                                 <Box>
                                     <Image
                                         // _hover={{ transform: 'scale(1.1)', transition: '0.5s' }}
@@ -81,8 +90,11 @@ export default function Detalhes() {
                             <CardBody>
                                 <Heading size="md">{product?.name}</Heading>
                                 <Text py="2">{product?.description}</Text>
-                                <Flex> <AiFillStar/> <Text color={'gray.600'}>150 Avaliações de clientes</Text></Flex>
-                                <Text fontWeight={'semibold'} fontSize="3xl">
+                                <Flex gap={5} fontSize={'2xl'} alignItems={'center'}>
+                                    <AiFillStar fontSize={25} color='#FF5C01'/>
+                                    {averageStar} 
+                                </Flex>
+                                <Text fontWeight={'semibold'} fontSize="3xl" mt={5}>
                                     {product?.price &&
                                         new Intl.NumberFormat('pt-BR', {
                                             style: 'currency',

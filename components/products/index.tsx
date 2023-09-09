@@ -1,23 +1,9 @@
-import {
-    Box,
-    Button,
-    Card,
-    CardBody,
-    Flex,
-    HStack,
-    Heading,
-    Image,
-    Stack,
-    Text,
-    transition,
-    useDisclosure
-} from '@chakra-ui/react'
+import { Box, Card, Image, Stack, Text, useDisclosure } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { CartContext } from '../../context/cartContext'
 import { AiFillStar } from 'react-icons/ai'
 import { Product } from '../../types/produtc'
-import { MyButton } from '../button'
 import { AiOutlineHeart, AiOutlineEye } from 'react-icons/ai'
 import { BsCart3 } from 'react-icons/bs'
 import { ModalProduct } from './modalProduct'
@@ -28,7 +14,6 @@ interface ProductsProps {
 
 export function Products({ product }: ProductsProps) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { addProductCart } = useContext(CartContext)
 
     return (
         <Card h="450px">
@@ -48,7 +33,7 @@ export function Products({ product }: ProductsProps) {
                     <Box display={'flex'} flexDirection={'column'} gap={5}>
                         <AiOutlineHeart cursor="pointer" size={25} color="#9aa0a6" />
                         <AiOutlineEye onClick={onOpen} cursor="pointer" size={25} color="#9aa0a6" />
-                        <ModalProduct isOpen={isOpen} onOpen={onOpen} onClose={onClose} product={product}/>
+                        <ModalProduct isOpen={isOpen} onOpen={onOpen} onClose={onClose} product={product} />
                         <BsCart3 cursor="pointer" size={25} color="#9aa0a6" />
                     </Box>
                 </Box>

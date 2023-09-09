@@ -1,4 +1,4 @@
-import { Box, Input, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import { BiUser } from 'react-icons/bi'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { Orders } from '../components/orders'

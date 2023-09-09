@@ -1,27 +1,31 @@
 import { useToast } from '@chakra-ui/react'
-import { createContext, useEffect, useState } from 'react'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 import api from '../../services/api'
 import { useSession } from 'next-auth/react'
+import { Product } from '../../types/produtc'
+import { User } from '../../types/user'
+import { Checkout } from '../../types/checkout'
 
 interface CartContextType {
     children?: React.ReactNode
-    user: any
-    allProducts: any
+    user: User | null
+    allProducts: Product[]
     allProductsCart: any
     loading: Boolean
     addComment: (productId: String, userId: String) => Promise<void>
     addProductCart: (id: String) => Promise<void>
     remove: (id: string) => Promise<void>
+    productCheckout: (checkout: Checkout) => Promise<void>
     reqProduct: (name?: string) => Promise<void>
     findProductCategory: (value?: string) => Promise<void>
 }
 
-export const CartContext = createContext<CartContextType>({} as CartContextType)
+export const CartContext = createContext<CartContextType>({} as CartContextType);
 
-export const CartProvider = ({ children }: CartContextType & { children?: React.ReactNode }) => {
-    const [allProducts, setALLproducts] = useState()
+export const CartProvider = ({ children }: { children: ReactNode}) => {
+    const [allProducts, setALLproducts] = useState<Product[]>([])
     const [allProductsCart, setAllProductsCart] = useState()
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState<User | null>(null)
     const [loading, setLoading] = useState(false)
     const toast = useToast()
 
@@ -91,7 +95,7 @@ export const CartProvider = ({ children }: CartContextType & { children?: React.
             productId: id
         }
         try {
-            await api.post('/cart/644704b1ffaf8343a4276134', data)
+            await api.post(`/cart/${user?.cart[0]._id}`, data)
             toast({
                 position: 'bottom-right',
                 title: 'Produto adicionado ao carrinho com sucesso!😍.',
@@ -112,7 +116,7 @@ export const CartProvider = ({ children }: CartContextType & { children?: React.
     //Removendo um produto do carrinho
     const remove = async (id: String) => {
         try {
-            await api.delete(`/cart/644704b1ffaf8343a4276134/produtos/${id}`)
+            await api.delete(`/cart/${user?.cart[0]._id}/produtos/${id}`)
             toast({
                 position: 'bottom-right',
                 title: 'Produto removido com sucesso!😭.',
@@ -133,6 +137,15 @@ export const CartProvider = ({ children }: CartContextType & { children?: React.
         } catch (error) {
             console.log(error)
         }
+    };
+
+    // Finalizar compra
+    const productCheckout = async (data: Checkout) => {
+        try {
+            await api.post(`/checkout/${user?.cart[0]._id}`, data)
+        } catch (error) {
+            console.log(error)    
+        }
     }
 
     return (
@@ -144,6 +157,7 @@ export const CartProvider = ({ children }: CartContextType & { children?: React.
                 addComment,
                 addProductCart,
                 allProductsCart,
+                productCheckout,
                 remove,
                 reqProduct,
                 findProductCategory
